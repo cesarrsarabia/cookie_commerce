@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
                         <div class="slide__thumb">
-                            <img src="images/slider/fornt-img/1.png" alt="slider images">
+                            <img src="{{ asset('images/main/cookies_main.jpg') }}" alt="slider images">
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
                         <div class="slide">
                             <div class="slider__inner">
-                                <h2>Marcas exclusivas</h2>
+                                <h2>Sabores exclusivos</h2>
                                 <h1>Exclusive!</h1>
                                 <div class="cr__btn">
                                     <a href="cart.html">Shop Now</a>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
                         <div class="slide__thumb">
-                            <img src="images/slider/fornt-img/2.png" alt="slider images">
+                            <img src="{{ asset('images/main/cherry_cola_oreo.jpg') }}" alt="slider images">
                         </div>
                     </div>
                 </div>

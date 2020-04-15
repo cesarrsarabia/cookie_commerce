@@ -7,7 +7,7 @@
     <title>Cookie Commerce</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme/images/favicon.ico')}}">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -60,7 +60,7 @@
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
                                     <ul class="main__menu">
                                         <li class="drop"><a href="index.html">Home</a></li>
-                                        <li class="drop"><a href="#">women</a>
+                                        <li class="drop"><a href="#">Option</a>
                                             <ul class="dropdown mega_dropdown">
                                                 <!-- Start Single Mega MEnu -->
                                                 <li><a class="mega__title" href="product-grid.html">Shop Pages</a>
@@ -96,7 +96,7 @@
                                                 <!-- End Single Mega MEnu -->
                                             </ul>
                                         </li>
-                                        <li class="drop"><a href="#">men</a>
+                                        <li class="drop"><a href="#">Option</a>
                                             <ul class="dropdown mega_dropdown">
                                                 <!-- Start Single Mega MEnu -->
                                                 <li><a class="mega__title" href="product-grid.html">Shop Pages</a>
@@ -132,19 +132,19 @@
                                                 <!-- End Single Mega MEnu -->
                                             </ul>
                                         </li>
-                                        <li class="drop"><a href="#">Product</a>
+                                        <li class="drop"><a href="#">Option</a>
                                             <ul class="dropdown">
                                                 <li><a href="product-grid.html">Product Grid</a></li>
                                                 <li><a href="product-details.html">Product Details</a></li>
                                             </ul>
                                         </li>
-                                        <li class="drop"><a href="blog.html">blog</a>
+                                        <li class="drop"><a href="blog.html">Option</a>
                                             <ul class="dropdown">
                                                 <li><a href="blog.html">Blog Grid</a></li>
                                                 <li><a href="blog-details.html">Blog Details</a></li>
                                             </ul>
                                         </li>
-                                        <li class="drop"><a href="#">Pages</a>
+                                        <li class="drop"><a href="#">Option</a>
                                             <ul class="dropdown">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog-details.html">Blog Details</a></li>
@@ -156,7 +156,7 @@
                                                 <li><a href="wishlist.html">wishlist</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>
 
@@ -188,7 +188,7 @@
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
                                     <div class="header__account">
-                                        <a href="#"><i class="icon-user icons"></i></a>
+                                        <a href="{{ route('login') }}"><i class="icon-user icons"></i></a>
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
