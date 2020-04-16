@@ -53,13 +53,14 @@
                         <div class="menumenu__container clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="logo">
-                                <a href="index.html"><img src="{{asset('images/LogoCookieCommerce.png')}}" alt="logo images"></a>
+                                    <a href="#"><img src="{{asset('images/LogoCookieCommerce.png')}}"
+                                            alt="logo images"></a>
                                 </div>
                             </div>
-                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                            <div class="col-md-6 col-lg-8 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
                                     <ul class="main__menu">
-                                        <li class="drop"><a href="index.html">Home</a></li>
+                                        <li class="drop"><a href="#">Home</a></li>
                                         <li class="drop"><a href="#">Option</a>
                                             <ul class="dropdown mega_dropdown">
                                                 <!-- Start Single Mega MEnu -->
@@ -138,12 +139,14 @@
                                                 <li><a href="product-details.html">Product Details</a></li>
                                             </ul>
                                         </li>
+                                        {{-- 
                                         <li class="drop"><a href="blog.html">Option</a>
                                             <ul class="dropdown">
                                                 <li><a href="blog.html">Blog Grid</a></li>
                                                 <li><a href="blog-details.html">Blog Details</a></li>
                                             </ul>
                                         </li>
+                                        --}}
                                         <li class="drop"><a href="#">Option</a>
                                             <ul class="dropdown">
                                                 <li><a href="blog.html">Blog</a></li>
@@ -182,14 +185,55 @@
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                            <div class="col-md-4 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
                                     <div class="header__search search search__open">
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
+
+                                    @guest
+                                    @if (Route::has('register'))
                                     <div class="header__account">
-                                        <a href="{{ route('login') }}"><i class="icon-user icons"></i></a>
+                                        <a href="{{ route('login') }}">Login<i class="icon-user icons"></i></a>
                                     </div>
+                                    @endif
+                                    @else
+                                    <nav class="main__menu__nav hidden-xs hidden-sm">
+                                        <ul class="main__menu">
+                                            <li class="drop">
+                                                <a href="#">
+                                                    {{ Auth::user()->nombre }}
+                                                </a>
+
+                                                <ul class="dropdown">
+
+                                                    <li>
+                                                        <a href="dropdown-item">
+                                                            Cuenta
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault();
+                                                                      document.getElementById('logout-form').submit();">
+                                                            {{ __('Logout') }}
+                                                        </a>
+
+                                                        <form id="logout-form" action="{{ route('logout') }}"
+                                                            method="POST" style="display: none;">
+                                                            @csrf
+                                                        </form>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+
+                                    @endguest
+
+
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <!--<a href="#"><span class="htc__qua">2</span></a>-->
@@ -210,12 +254,12 @@
         <div class="offset__wrapper">
             <!-- Start Search Popap -->
             <div class="search__area">
-                <div class="container" >
-                    <div class="row" >
-                        <div class="col-md-12" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="search__inner">
                                 <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                    <input placeholder="Búsqueda... " type="text">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -280,7 +324,7 @@
 
 
         @yield('content')
-       
+
         <!-- Start Footer Area -->
         <footer id="htc__footer">
             <!-- Start Footer Widget -->
@@ -360,14 +404,14 @@
                         </div>
                         <!-- End Single Footer Widget -->
                         <!-- Start Single Footer Widget -->
-                        
+
                         <!-- End Single Footer Widget -->
                     </div>
                 </div>
             </div>
             <!-- End Footer Widget -->
-                        
-            
+
+
         </footer>
         <!-- End Footer Style -->
     </div>
