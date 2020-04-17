@@ -118,6 +118,12 @@
     
 -----------------------------------------------------------------------------------*/
 
+.vertical-center {
+    height:100%;
+    width:100%;  
+    text-align: center;  /* align the inline(-block) elements horizontally */
+  }
+  
 
 /* 2. index page */
 /* 2.1 Header sidebar */

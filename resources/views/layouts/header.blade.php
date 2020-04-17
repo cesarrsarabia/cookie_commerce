@@ -1,5 +1,5 @@
 <header>
-    <div class="header-bottom wrapper-padding-2 res-header-sm sticker header-sticky-3 furits-header">
+    <div class="header-bottom wrapper-padding-2 res-header-sm sticker header-sticky-3 furits-header" style="position:relative">
         <div class="container-fluid">
             <div class="header-bottom-wrapper">
                 <div class="logo-2 ptb-35">
@@ -97,13 +97,13 @@
                                 <a href="{{ route('login') }}">Login</a>
                             </li>
                             <li>
-                                <a href="#">Reg</a>
+                                <a href="{{ route('register') }}">Reg</a>
                             </li>
                             @endif
                             @else
 
                             <li>
-                                <a href="#"> {{ Auth::user()->nombre }}</a>
+                                <a href="#">Bienvenido, {{ Auth::user()->nombre }}</a>
                                 <ul class="single-dropdown">
                                     <li>
                                         <a href="dropdown-item">

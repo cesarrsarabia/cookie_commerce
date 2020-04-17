@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use Illuminate\Http\Request;
-use App\Producto;
 
-class ProductoController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos =  Producto::all();
-        //dd($tareas);
-        return view('productos.productoIndex', compact('productos'));
+        //
     }
 
     /**
@@ -27,10 +25,6 @@ class ProductoController extends Controller
     public function create()
     {
         //
-        //$categorias = Categoria::all()->pluck('nombre_categoria', 'id');
-        //$equipos = Equipo::all()->pluck('nombre_equipo', 'id')->toArray();
-        //dd($categorias->pluck('nombre_categoria'.'id'));
-        return view('productos.productoForm');
     }
 
     /**
@@ -47,10 +41,10 @@ class ProductoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Categoria $categoria)
     {
         //
     }
@@ -58,10 +52,10 @@ class ProductoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categoria $categoria)
     {
         //
     }
@@ -70,10 +64,10 @@ class ProductoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
@@ -81,10 +75,10 @@ class ProductoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Categoria $categoria)
     {
         //
     }

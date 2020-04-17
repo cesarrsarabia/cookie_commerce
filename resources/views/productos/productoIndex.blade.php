@@ -1,8 +1,7 @@
-@extends('layouts.main')
+@extends('layouts.master')
 
 @section('content')
-<br>
-<br>
+
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="card shadow">
@@ -41,4 +40,4 @@
         </div>
     </div>
 </div>
-    @endsection
+@endsection

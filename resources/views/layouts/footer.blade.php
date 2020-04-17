@@ -1,5 +1,5 @@
 <footer class="footer-area fruits-footer">
-    <div class="food-footer-bottom pt-80 pb-70 black-bg-5">
+    <div class="food-footer-bottom pt-80 pb-70 black-bg-5" style="margin-top:50px">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-4">
