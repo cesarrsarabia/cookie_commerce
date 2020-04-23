@@ -32,7 +32,17 @@
 
 
 
+
+@if (\Auth::check())
+    @if (\Auth::user()->isAdmin())
+        @include('layouts.header_Admin')
+    @else
+        @include('layouts.header')
+    @endif
+@else 
     @include('layouts.header')
+@endif  
+   
     <!-- header end -->
 
     <br>
