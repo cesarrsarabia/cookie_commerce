@@ -26,31 +26,29 @@
     {{-- <form action="{{ route('tarea.store') }}" method="POST">--}}
 @endisset
 
+<div class="row justify-content-center">
+    <h1 class="cart-heading">Agregar Producto</h1>
+</div>
 
-    <div class="row">
-        <div class="form-group">
-            <label for="inputNombre">Nombre Producto</label>
-            {!! Form::text('nombre',null, ['class' => 'form-control','id'=>'inputNombre']); !!}
+<div class="row">
+    <div class="col-md-12 col-12 col-lg-12 col-xl-6 ml-auto mr-auto">
+        <div class="login">
+            <div class="login-form-container">
+                <div class="login-form">
+                   
+                        {!! Form::text('nombre',null,['placeholder'=>'Username','class' => 'form-control','id'=>'inputNombre']); !!}
+                        {!! Form::text('descripcion',null ,['class' => 'form-control',
+                            'id'=>'input_descripcion','placeholder'=>'Descripción']); !!}
+                        {!! Form::number('precio',null , ['class' => 'form-control','id'=>'input_precio','placeholder'=>'Precio']); !!}
+                        <div class="button-box">
+                            <button type="submit" class="default-btn floatright">Añadir</button>
+                        </div>
+                    
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group">
-            <label for="input_descripcion">Descripción</label>
-            {!! Form::text('descripcion',null , ['class' => 'form-control','id'=>'input_descripcion']); !!}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="form-group">
-            <label for="input_precio">Precio</label>
-            {!! Form::number('precio',null , ['class' => 'form-control','id'=>'input_precio']); !!}
-        </div>
-    </div>
-
-
-    <br>
-
-    <button type="submit" class="btn btn-primary">Guardar</button>
+</div>
 
 {!! Form::close() !!}
 

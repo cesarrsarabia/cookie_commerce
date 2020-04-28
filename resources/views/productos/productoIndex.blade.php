@@ -3,8 +3,35 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="card shadow">
+    <div class="col-md-3">
+        <a href="{{ action('ProductoController@create') }}" class="menu-btn btn-hover">Agregar Producto</a>
+    </div>
+   
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="table-content table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+       {{--  <div class="card shadow">
             <div class="card-header">
                 <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
             </div>
@@ -38,6 +65,7 @@
                 </div>
             </div>
         </div>
+        --}}
     </div>
 </div>
 @endsection
