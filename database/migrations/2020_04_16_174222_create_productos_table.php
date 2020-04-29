@@ -18,9 +18,8 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->decimal('precio',8,2);            
-            //$table->smallIncrements('categoria_id');
-            
-            //$table->timestamps();
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->timestamps();
         });
     }
 

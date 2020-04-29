@@ -27,7 +27,7 @@
 @endisset
 
 <div class="row justify-content-center">
-    <h1 class="cart-heading">Agregar Producto</h1>
+    <h1 class="cart-heading">Información Producto</h1>
 </div>
 
 <div class="row">
@@ -36,10 +36,17 @@
             <div class="login-form-container">
                 <div class="login-form">
                    
-                        {!! Form::text('nombre',null,['placeholder'=>'Username','class' => 'form-control','id'=>'inputNombre']); !!}
-                        {!! Form::text('descripcion',null ,['class' => 'form-control',
+                        {!! Form::text('nombre',null,['placeholder'=>'Nombre','class' => 'form-control','id'=>'inputNombre']); !!}
+                        {!! Form::textarea('descripcion',null ,['class' => 'form-control','rows'=> 4,'resize:none',
                             'id'=>'input_descripcion','placeholder'=>'Descripción']); !!}
+                            <br>
                         {!! Form::number('precio',null , ['class' => 'form-control','id'=>'input_precio','placeholder'=>'Precio']); !!}
+
+                        <label for="input_categ">Categoria</label>
+                        {!!
+                            Form::select('categoria_id',['0' => 'Ninguna'] + $categorias,null,['class' => 'form-control','id'=>'input_categ'])
+                        !!}
+
                         <div class="button-box">
                             <button type="submit" class="default-btn floatright">Añadir</button>
                         </div>

@@ -16,8 +16,7 @@
         <div class="table-content table-responsive">
             <table>
                 <thead>
-                    <tr>
-                        
+                    <tr>                        
                         <th>Imagen</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
@@ -27,45 +26,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach ($productos as $producto)
+                    <tr>                    
+                        <td class="product-thumbnail">
+                            <a href="#"><img src="{{ asset('assets/img/cart/1.jpg') }}" alt=""></a>
+                        </td>
+                        <td class="product-name">
+                            {{$producto->nombre}}
+                        </td>
+                        <td class="product-name">
+                            {{$producto->descripcion}}
+                        </td>
+                        <td class="product-name">
+                            ${{$producto->precio}}
+                        </td>
+                        <td class="product-remove">
+                            <a href="#"><i class="pe-7s-note"></i></a>
+                        </td>
+                        <td class="product-remove">
+                            <a href="#"><i class="pe-7s-close"></i></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                   
                 </tbody>
             </table>
         </div>
-       {{--  <div class="card shadow">
-            <div class="card-header">
-                <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
-            </div>
-            <br>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <a href="{{ action('ProductoController@create') }}"
-                        class="btn btn-success btn-primary">
-                        Nuevo Producto
-                    </a>
-
-                    <hr>
-                    <table class="table">
-                        <thead>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                        </thead>
-                        @foreach($productos as $producto)
-                            <tr>
-                                <td>
-                                    <a href="{{ route('producto.show',$producto->id) }}">
-                                        {{ $producto->id }}
-                                    </a>
-                                </td>
-                                <td>{{ $producto->nombre }}</td>
-                                <td>{{ $producto->descripcion }}</td>
-                            </tr>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
-        </div>
-        --}}
+      
     </div>
 </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use App\Categoria;
 
 class ProductoController extends Controller
 {
@@ -26,11 +27,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
-        //$categorias = Categoria::all()->pluck('nombre_categoria', 'id');
-        //$equipos = Equipo::all()->pluck('nombre_equipo', 'id')->toArray();
-        //dd($categorias->pluck('nombre_categoria'.'id'));
-        return view('productos.productoForm');
+        
+        $categorias = Categoria::all()->pluck('nombre', 'categoria_id')->toArray();
+        
+        return view('productos.productoForm',compact('categorias'));
     }
 
     /**
@@ -41,7 +41,21 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Valida info ingresada
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required|max:255', // Valida el tipo de dato sea fecha
+            'precio' => 'required|between:0,999.99',
+        ]);
+
+        //Si la seleccion de categoria es ninguna , agrega un null
+        if($request->categoria_id == 0 ){
+            $request->merge(['categoria_id' => null]);
+        }
+
+        Producto::create($request->all());
+        return redirect()->route('producto.index');
+        
     }
 
     /**
