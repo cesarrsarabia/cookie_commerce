@@ -5966,6 +5966,24 @@ a.icon-cart-furniture.food-cart span {
 .btn-hover.menu-btn::before {
     border-radius: 50px;
 }
+.menu-btn-danger {
+    background-color: #ee2929;
+    border-radius: 50px;
+    color: #ffffff;
+    display: inline-block;
+    font-family: "Roboto Slab", serif;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 8px 40px 12px;
+    z-index: 1;
+}
+
+.menu-btn-danger:hover {
+    color: #ffffff;
+}
+.btn-hover.menu-btn-danger::before {
+    border-radius: 50px;
+}
 
 /* 10.6 Banner style of food */ 
 
@@ -6958,6 +6976,13 @@ p.checkout-coupon input[type="submit"] {
     border: 1px solid #e5e5e5;
     border-radius: 0;
     height: 42px;
+    width: 100%;
+    padding: 0 0 0 10px;
+}
+.checkout-form-list textarea {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 0;
     width: 100%;
     padding: 0 0 0 10px;
 }

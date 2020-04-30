@@ -21,8 +21,7 @@
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Ver Detalles</th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -41,11 +40,8 @@
                             ${{$producto->precio}}
                         </td>
                         <td class="product-remove">
-                            <a href="#"><i class="pe-7s-note"></i></a>
-                        </td>
-                        <td class="product-remove">
-                            <a href="#"><i class="pe-7s-close"></i></a>
-                        </td>
+                            <a href="{{ route('producto.show', $producto->producto_id) }}"><i class="pe-7s-look"></i></a>
+                        </td>                        
                     </tr>
                     @endforeach
                    

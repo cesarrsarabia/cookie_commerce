@@ -16,9 +16,10 @@ class Producto extends Model
         'categoria_id'
     ];
     protected $dates = ['created_at', 'updated_at'];
+    protected $primaryKey = 'producto_id';
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo('App\Categoria', 'categoria_id');
     }
     
 }
