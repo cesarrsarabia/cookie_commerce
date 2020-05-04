@@ -77,31 +77,49 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Producto $producto)
     {
         //
+        //$producto = Producto::find($id);
+        $categorias = Categoria::all()->pluck('nombre', 'categoria_id')->toArray();
+        
+        return view('productos.productoForm', compact('producto','categorias'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Producto $producto)
     {
         //
+        //Valida que ls datos no estes vacios
+
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required|max:255', // Valida el tipo de dato sea fecha
+            'precio' => 'required|between:0,999.99',
+        ]);
+        if($request->categoria_id == 0 ){
+            $request->merge(['categoria_id' => null]);
+        }
+        Producto::where('producto_id',$producto->producto_id)->update($request->except('_token','_method'));
+      
+        return redirect()->route('producto.show', $producto->producto_id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('producto.index');
     }
 }

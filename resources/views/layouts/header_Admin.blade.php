@@ -10,18 +10,18 @@
                 <div class="menu-style-2 handicraft-menu menu-hover">
                     <nav>
                         <ul>
-                            <li><a href="#">Inicio</a>                                
+                            <li><a href="{{ route('home') }}">Inicio</a>                                
                             </li>
-                            <li><a href="blog.html">Categorias</a>
+                            <li><a href="{{ route('categoria.index') }}">Categorias</a>
                                 
                             </li>           
-                            <li><a href="#">Productos</a>
+                            <li><a href="{{ route('producto.index') }}">Productos</a>
                                 
                             </li>
-                            <li><a href="shop.html">Ventas</a>
+                            <li><a href="#">Ventas</a>
                                
                             </li>
-                            <li><a href="blog.html">Usuarios</a>
+                            <li><a href="#">Usuarios</a>
                                
                             </li>                           
                         </ul>

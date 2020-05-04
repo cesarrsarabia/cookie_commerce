@@ -21,4 +21,4 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('producto','ProductoController');
 
-Route::resource('categoria','CategoriaController');
+Route::resource('categoria','CategoriaController')->parameters(['categoria' => 'categoria']);;

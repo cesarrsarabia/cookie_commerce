@@ -14,7 +14,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        //dd(($categorias));
+        return view('categorias.categoriaIndex',compact('categorias'));
     }
 
     /**
@@ -25,6 +27,7 @@ class CategoriaController extends Controller
     public function create()
     {
         //
+        return view('categorias.categoriaForm');
     }
 
     /**
@@ -47,6 +50,8 @@ class CategoriaController extends Controller
     public function show(Categoria $categoria)
     {
         //
+       
+        return view('categorias.categoriaShow',compact('categoria'));
     }
 
     /**
@@ -58,6 +63,8 @@ class CategoriaController extends Controller
     public function edit(Categoria $categoria)
     {
         //
+        
+        return view('categorias.categoriaForm', compact('categoria'));
     }
 
     /**
