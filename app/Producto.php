@@ -21,5 +21,8 @@ class Producto extends Model
     {
         return $this->belongsTo('App\Categoria', 'categoria_id');
     }
-    
+    public function venta()
+    {
+        return $this->belongsTo('App\Venta', 'venta_id');
+    }
 }
