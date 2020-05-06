@@ -11,7 +11,15 @@
                     <div class="col-md-3 offset-0">                       
                             <span style="font-weight:bold">ID Producto:</span>
                             <label for="">{{$producto->producto_id}}</label>					                      
-                    </div>                    
+                    </div>   
+                    
+                    <div class="col-md-12" style="padding-top:30px;">
+                        <div class="checkout-form-list">
+                           
+                             <img src="{{isset($rutaArchivo)? $rutaArchivo : ''}}" alt="">
+                            		
+                        </div>
+                    </div>
                     <div class="col-md-12" style="padding-top:30px;">
                         <div class="checkout-form-list">
                             <label>Nombre Producto</label>

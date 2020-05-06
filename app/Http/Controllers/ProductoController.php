@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use App\Categoria;
+use App\Archivo;
+
 
 class ProductoController extends Controller
 {
@@ -16,6 +18,7 @@ class ProductoController extends Controller
     public function index()
     {
         $productos =  Producto::all();
+        
         //dd($tareas);
         return view('productos.productoIndex', compact('productos'));
     }
@@ -53,7 +56,25 @@ class ProductoController extends Controller
             $request->merge(['categoria_id' => null]);
         }
 
-        Producto::create($request->all());
+       $new_producto = Producto::create($request->all());
+
+        if ($request->mi_archivo->isValid())
+        {
+            $nombreHash = $request->mi_archivo->store('archivos_cargados','public');
+            //$request->mi_archivo->store('archivos_cargados');
+            
+            //Crea registro en tabla archivos
+            $new_producto->archivos()->create([
+                'nombre_original' => $request->mi_archivo->getClientOriginalName(),
+                'nombre_hash' => $nombreHash,
+                'mime' => $request->mi_archivo->getClientMimeType(),
+                'tamaño' => $request->mi_archivo->getClientSize(),
+                ]);
+          
+            
+        }
+
+
         return redirect()->route('producto.index');
         
     }
@@ -67,7 +88,14 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-        return view('productos.productoShow',compact('producto'));
+        $archivo = $producto->archivos;
+        //dd($archivo);
+        //$rutaArchivo_1 = Storage::disk('public')->get( $archivo[0]->nombre_hash); 
+        $nombreImg = $archivo[0]->nombre_hash;
+        $rutaArchivo = asset("storage/" .$nombreImg);
+        //$contents = Archivo::with('origen')->get();
+        //dd($contents);
+        return view('productos.productoShow',compact('producto','rutaArchivo'));
 
     }
 

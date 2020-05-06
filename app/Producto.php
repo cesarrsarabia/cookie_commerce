@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\models\Archivo;
 use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
@@ -24,5 +25,9 @@ class Producto extends Model
     public function venta()
     {
         return $this->belongsTo('App\Venta', 'venta_id');
+    }
+    public function archivos()
+    {
+        return $this->morphMany(Archivo::class,'origen');
     }
 }

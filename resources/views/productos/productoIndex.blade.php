@@ -17,7 +17,7 @@
             <table>
                 <thead>
                     <tr>                        
-                        <th>Imagen</th>
+                      
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
@@ -27,9 +27,7 @@
                 <tbody>
                     @foreach ($productos as $producto)
                     <tr>                    
-                        <td class="product-thumbnail">
-                            <a href="#"><img src="{{ asset('assets/img/cart/1.jpg') }}" alt=""></a>
-                        </td>
+                        
                         <td class="product-name">
                             {{$producto->nombre}}
                         </td>

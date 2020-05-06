@@ -17,12 +17,12 @@
 </div>
 
 @isset($producto)
-    {!!Form::model($producto, ['route' => ['producto.update', $producto->producto_id],'method' => 'PATCH'])!!}
+    {!!Form::model($producto, ['route' => ['producto.update', $producto->producto_id],'method' => 'PATCH','enctype' => 'multipart/form-data'])!!}
     {{-- <form action="{{ route('tarea.update',$tarea->id) }}"
     method="POST">--}}
     @method('PATCH')
 @else
-    {!! Form::open(['route' => 'producto.store']) !!}
+    {!! Form::open(['route' => 'producto.store','enctype' => 'multipart/form-data']) !!}
     {{-- <form action="{{ route('tarea.store') }}" method="POST">--}}
 @endisset
 
@@ -35,6 +35,11 @@
         <div class="login">
             <div class="login-form-container">
                 <div class="login-form">
+
+                    <label for="archivo">Carga de Archivo</label>
+                    <input name="mi_archivo" type="file">                   
+                    <br>
+                    <br>
                    
                         {!! Form::text('nombre',null,['placeholder'=>'Nombre','class' => 'form-control','id'=>'inputNombre']); !!}
                         {!! Form::textarea('descripcion',null ,['class' => 'form-control','rows'=> 4,'resize:none',
