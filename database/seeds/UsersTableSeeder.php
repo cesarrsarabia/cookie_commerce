@@ -15,9 +15,17 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'nombre' => 'Admin',
             'apellido' => '-',
-            'email' => 'admin@ccommerce.mx',
+            'email' => 'admin@cookie.mx',
             'password' => bcrypt('Password'),
             'tipo' => 'admin'            
+        ]);
+
+        DB::table('users')->insert([
+            'nombre' => 'César',
+            'apellido' => 'Ramirez',
+            'email' => 'cesar@cookie.mx',
+            'password' => bcrypt('12345678'),
+            'tipo' => 'user'            
         ]);
     }
 }

@@ -8634,7 +8634,8 @@ a.bundle-btn {
     z-index: 99999;
 }
 .furits-header .menu-style-2 nav > ul > li > a {
-    color: #578a01;
+    color: #943939;
+    
 }
 .furits-login-cart {
     display: flex;
@@ -8731,7 +8732,7 @@ a.bundle-btn {
     color: #fff;
 }
 .furits-content p {
-    color: #578a01;
+    color: #943939;
     font-size: 24px;
     font-weight: 500;
     margin: 30px 0 52px;

@@ -15,6 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    public $timestamps = true;
+
     protected $fillable = [
         'nombre', 'email', 'password','apellido','ciudad','direccion','tipo',
     ];
@@ -37,6 +40,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
 
     public function isAdmin(){
         if (strtolower($this->tipo )== "admin") {
@@ -46,4 +53,5 @@ class User extends Authenticatable
         }
         
     }
+    
 }

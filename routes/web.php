@@ -21,7 +21,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('producto','ProductoController');
 
-Route::resource('categoria','CategoriaController')->parameters(['categoria' => 'categoria']);;
+Route::resource('categoria','CategoriaController')->parameters(['categoria' => 'categoria']);
+
+Route::resource('usuario','UserController');
 
 /*
 //Rutas para listado y carga de archivos

@@ -30,14 +30,15 @@
     <h1 class="cart-heading">Información Producto</h1>
 </div>
 
+         
 <div class="row">
     <div class="col-md-12 col-12 col-lg-12 col-xl-6 ml-auto mr-auto">
         <div class="login">
             <div class="login-form-container">
                 <div class="login-form">
 
-                    <label for="archivo">Carga de Archivo</label>
-                    <input name="mi_archivo" type="file">                   
+                    <input id="mi_img" name="mi_archivo" class="form-control" type="file" onchange="readURL(this);">  
+                    <img id="blah" src="" alt=""/> 
                     <br>
                     <br>
                    
@@ -64,4 +65,25 @@
 
 {!! Form::close() !!}
 
+
+
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(300)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,14 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categorias = Categoria::all();
         if(\Auth::check()){
             if(\Auth::user()->isAdmin()){
                 return view('home_admin');
             }else{
-                return view('home');
+                
+                return view('home',compact('categorias'));
             }
         }else{
-            return view('home');
+            return view('home',compact('categorias'));
         }
         
     }

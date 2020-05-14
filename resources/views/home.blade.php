@@ -6,14 +6,15 @@
 <div>
     <div class="slider-area">
         <div class="slider-active-2 owl-carousel">
-            <div class="single-slider-4 bg-img furits-slider" style="background-image: url(assets/img/slider/16.jpg)">
+            <div class="single-slider-4 bg-img furits-slider">
                 <div class="container">
                     <div class="fadeinup-animated furits-content text-center">
-                        <img class="animated" src="assets/img/slider/12.png" alt="">
-                        <p class="animated">Health is not about the weight you lose. But about the life you gain!
+                        {{--<img class="animated" src="assets/img/slider/12.png" alt="">--}}
+                       {{-- <p class="animated">Las mejores galletas en el mundo . Solo Aqui!--}}
                         </p>
                         <a class="furits-slider-btn btn-hover animated" href="product-details.html">Shop Now</a>
-                        <img class="animated slide-img-position" src="assets/img/slider/11.png" alt="">
+                        <img class="animated slide-img-position" src="{{ asset('images/cookies_bar.jpg') }}" 
+                        style="width:974px;height:741px;" alt="">
                     </div>
                 </div>
             </div>
