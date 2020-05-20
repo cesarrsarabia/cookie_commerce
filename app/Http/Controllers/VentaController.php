@@ -16,7 +16,7 @@ class VentaController extends Controller
     {
         $ventas =  Venta::all();
         //dd($tareas);
-        return view('prodventas.ventaIndex', compact('ventas'));
+        return view('ventas.ventaIndex', compact('ventas'));
     }
 
     /**

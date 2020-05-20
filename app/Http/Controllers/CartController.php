@@ -22,6 +22,12 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function Add($p_id)
+    {
+        dd($p_id);
+        //
+    }
     public function create()
     {
         //
@@ -33,8 +39,10 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($request)
     {
+
+        dd($request);
         //
     }
 

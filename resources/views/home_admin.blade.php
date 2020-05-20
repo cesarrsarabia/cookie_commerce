@@ -44,7 +44,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Ventas</h5>
                   <p class="card-text">Gestión Ventas</p>
-                  <a href="#" class="furits-banner-btn btn-hover">Abrir</a>
+                  <a href="{{ route('venta.index') }}" class="furits-banner-btn btn-hover">Abrir</a>
                 </div>
               </div>
         </div>
@@ -59,7 +59,7 @@
                 <div class="card-body">
                 <h5 class="card-title">Usuarios</h5>
                 <p class="card-text">Gestión Usuarios</p>
-                <a href="{{ route('usuario.index', ['id'=>1]) }}" class="furits-banner-btn btn-hover">Abrir</a>
+                <a href="{{ route('usuario.index') }}" class="furits-banner-btn btn-hover">Abrir</a>
                 </div>
             </div>
         </div>

@@ -25,6 +25,14 @@ Route::resource('categoria','CategoriaController')->parameters(['categoria' => '
 
 Route::resource('usuario','UserController');
 
+Route::resource('venta','VentaController')->parameters(['venta' => 'venta']);
+
+Route::get('/ShopGrid','ShopController@ShowProductsGrid')->name('ShopGrid');
+
+Route::get('/ProductDetails/{id}','ShopController@ShowProductDetails')->name('ProductDetail');
+
+//Route::post('/cart/add','CartController@store');
+
 /*
 //Rutas para listado y carga de archivos
 Route::get('archivo', function() {

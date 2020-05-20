@@ -8938,7 +8938,7 @@ a.bundle-btn {
     position: relative;
 }
 .section-title-furits > h2::before {
-    background-color: #85bd02;
+    background-color: #882d2d;
     bottom: -13px;
     content: "";
     height: 2px;

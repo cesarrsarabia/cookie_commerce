@@ -18,10 +18,10 @@
                             <li><a href="{{ route('producto.index') }}">Productos</a>
                                 
                             </li>
-                            <li><a href="#">Ventas</a>
+                            <li><a href="{{ route('venta.index') }}">Ventas</a>
                                
                             </li>
-                            <li><a href="#">Usuarios</a>
+                            <li><a href="{{ route('usuario.index') }}">Usuarios</a>
                                
                             </li>                           
                         </ul>

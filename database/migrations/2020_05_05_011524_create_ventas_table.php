@@ -15,8 +15,9 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('folio');
             $table->integer('cantidad');  
-            $table->decimal('precio',8,2);     
+            $table->decimal('total',8,2);     
             $table->timestamps();
         });
     }

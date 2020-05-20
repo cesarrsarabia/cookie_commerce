@@ -12,7 +12,7 @@
                     <nav>
                         <ul>
                                                    
-                            <li><a href="#">Comprar</a>
+                            <li><a href="{{ route('ShopGrid') }}">Productos</a>
                                 <div class="category-menu-dropdown shop-menu">
                                     <div class="category-dropdown-style category-common2 mb-30">
                                         <h4 class="categories-subtitle">Por Categoria</h4>
@@ -24,14 +24,14 @@
                                             @endforeach                                            
                                         </ul>
                                     </div>
-                                    <div class="category-dropdown-style category-common2 mb-30">
-                                        <h4 class="categories-subtitle">Productos</h4>
+                                    {{--<div class="category-dropdown-style category-common2 mb-30">
+                                        <h4 class="categories-subtitle"></h4>
                                         <ul>
                                             <li><a href="product-details.html">Todo</a></li>
                                            
                                         </ul>
                                     </div>
-
+                                    --}}
                                     
                                     
                                 </div>

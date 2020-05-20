@@ -14,8 +14,16 @@ class Tarjeta extends Model
         'cvc'
     ];
     protected $primaryKey = 'tarjeta_id';
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id');
+    }
+
     public function ticket()
     {
         return $this->belongsTo('App\Ticket', 'ticket_id');
     }
+
+
 }

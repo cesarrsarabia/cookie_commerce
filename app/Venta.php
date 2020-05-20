@@ -6,11 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class venta extends Model
 {
+
+    public $timestamps = true;
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
+
     protected $fillable = [
         'venta_id',
-        'precioTotal_producto',
+        'total',
         'cantidad',
-        'producto_id'
+        'folio'
     ];
     protected $primaryKey = 'venta_id';
     public function ticket(){
