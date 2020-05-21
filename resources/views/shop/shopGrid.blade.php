@@ -175,7 +175,7 @@
                                     <div class="col-lg-4 col-md-6">
                                         <div class="product-wrapper product-box-style mb-30">
                                             <div class="product-img">
-                                                <a href="{{ route('ProductDetail', ['id'=>$product->producto_id]) }}">
+                                                <a href="{{ route('ProductDetail', ['producto'=>$product]) }}">
                                                     <img src="assets/img/product/fashion-colorful/4.jpg" alt="">
                                                 </a>
                                                 <div class="product-action">

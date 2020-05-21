@@ -54,4 +54,7 @@ class User extends Authenticatable
         
     }
     
+    public function Cart(){
+        return $this->hasOne('App\Cart','id');
+    }
 }

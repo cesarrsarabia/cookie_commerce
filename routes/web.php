@@ -29,7 +29,10 @@ Route::resource('venta','VentaController')->parameters(['venta' => 'venta']);
 
 Route::get('/ShopGrid','ShopController@ShowProductsGrid')->name('ShopGrid');
 
-Route::get('/ProductDetails/{id}','ShopController@ShowProductDetails')->name('ProductDetail');
+Route::get('/ProductDetails/{producto}','ShopController@ShowProductDetails')->name('ProductDetail');
+
+Route::post('/ProductDetails/{producto}/AddCart',
+'ShopController@AddProductToCart')->name('ShopAddToCart')->middleware('auth');
 
 //Route::post('/cart/add','CartController@store');
 
