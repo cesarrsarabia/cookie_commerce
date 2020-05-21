@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="header-bottom-wrapper">
                 <div class="logo-2 ptb-35">
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('images/LogoCookieCommerce.png') }}" alt=""
                      width="250px" height="100px">
                     </a>
@@ -97,55 +97,47 @@
                     <div class="header-cart-4 furits-cart">
                         <a class="icon-cart" href="#">
                             <i class="pe-7s-shopbag"></i>
-                            <span class="handicraft-count">02</span>
+
+                            @if (isset($cartProductos))
+                            <span class="handicraft-count">
+                                {{count($cartProductos)}}
+                            </span>
+                            @else
+                            <span class="handicraft-count">
+                               0
+                            </span>
+                            @endif
+                           
+                            
+                           
                         </a>
                         <ul class="cart-dropdown">
+                            @if (isset($cartProductos))
+                            @foreach ($cartProductos as $item)
                             <li class="single-product-cart">
                                 <div class="cart-img">
                                     <a href="#"><img src="assets/img/cart/1.jpg" alt=""></a>
                                 </div>
                                 <div class="cart-title">
-                                    <h5><a href="#"> Bits Headphone</a></h5>
-                                    <h6><a href="#">Black</a></h6>
-                                    <span>$80.00 x 1</span>
+                                    <h5><a href="#">{{$item->nombre_product}}</a></h5>
+                                    {{--<h6><a href="#">Black</a></h6>--}}
+                                <span>${{$item->precio}} x {{$item->cantidad}}</span>
                                 </div>
                                 <div class="cart-delete">
                                     <a href="#"><i class="ti-trash"></i></a>
                                 </div>
                             </li>
-                            <li class="single-product-cart">
-                                <div class="cart-img">
-                                    <a href="#"><img src="assets/img/cart/2.jpg" alt=""></a>
-                                </div>
-                                <div class="cart-title">
-                                    <h5><a href="#"> Bits Headphone</a></h5>
-                                    <h6><a href="#">Black</a></h6>
-                                    <span>$80.00 x 1</span>
-                                </div>
-                                <div class="cart-delete">
-                                    <a href="#"><i class="ti-trash"></i></a>
-                                </div>
-                            </li>
-                            <li class="single-product-cart">
-                                <div class="cart-img">
-                                    <a href="#"><img src="assets/img/cart/3.jpg" alt=""></a>
-                                </div>
-                                <div class="cart-title">
-                                    <h5><a href="#"> Bits Headphone</a></h5>
-                                    <h6><a href="#">Black</a></h6>
-                                    <span>$80.00 x 1</span>
-                                </div>
-                                <div class="cart-delete">
-                                    <a href="#"><i class="ti-trash"></i></a>
-                                </div>
-                            </li>
+                            @endforeach
+                            @endif
+                           
                             <li class="cart-space">
                                 <div class="cart-sub">
                                     <h4>Subtotal</h4>
                                 </div>
                                 <div class="cart-price">
-                                    <h4>$240.00</h4>
+                                    <h4>${{$subtotal}}</h4>
                                 </div>
+
                             </li>
                             <li class="cart-btn-wrapper">
                                 <a class="cart-btn btn-hover" href="#">view cart</a>
@@ -159,6 +151,7 @@
                
             </div>
             <div class="row">
+                {{-- 
                 <div class="mobile-menu-area handicraft-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
                     <div class="mobile-menu">
                         <nav id="mobile-menu-active">
@@ -224,6 +217,7 @@
                         </nav>
                     </div>
                 </div>
+                --}}
             </div>
         </div>
     </div>

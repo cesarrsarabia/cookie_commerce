@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\User;
 use App\cart_producto;
 use App\Categoria;
 use App\Producto;
@@ -21,13 +22,21 @@ class ShopController extends Controller
         $productos = Producto::paginate(2);
         //dd($productos);
         $categorias = Categoria::all();
-        return view('shop.shopGrid', compact('productos', 'categorias'));
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $subtotal = $this->subTotalCart($cartProductos);
+        return view('shop.shopGrid', compact('productos',
+         'categorias','userCart','cartProductos','subtotal'));
     }
 
     public function ShowProductDetails(Producto $producto)
     {
         $categorias = Categoria::all();
-        return view('shop.shopDetails', compact('categorias', 'producto'));
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $subtotal = $this->subTotalCart($cartProductos);
+        return view('shop.shopDetails', compact('categorias', 'producto',
+                    'userCart','cartProductos','subtotal'));
     }
 
     public function AddProductToCart(Request $request, Producto $producto)
@@ -35,7 +44,11 @@ class ShopController extends Controller
 
 
         if (Cart::where('user_id', '=', \Auth::id())->exists()) {
-
+            $idC = Cart::where('user_id','=',\Auth::id())->first()->value('id');
+            if(isset($idC)){
+                $p = cart_producto::where('user_id','=',$idC);
+                //dd($p);
+            }
         } else {
             $request->validate([
                 'quantity' => 'required|numeric|gt:0',
@@ -59,6 +72,16 @@ class ShopController extends Controller
             //DB::table('cart_products')->insert();
         }
     }
-
+    private function subTotalCart($products){
+        if(!isset($products)){
+            return 0;
+        }
+        $subTotal = 0;
+        foreach($products as $p){
+            $totalProduct = $p->precio * $p->cantidad;
+             $subTotal += $totalProduct;
+        }
+        return $subTotal;
+    }
     
 }
