@@ -24,7 +24,7 @@
                         <div class="col-md-12">
                             <div class="checkout-form-list">
                                 <label>País<span class="required">*</span></label>
-                                <input name="pais" type="text" placeholder="" value="México" disabled />
+                                <input name="pais" type="text" placeholder="" value="México" readonly/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -78,7 +78,7 @@
                                 <label>Telefono <span class="required">*</span></label>
                                 <input name="telefono" type="text" />
                                 @error('telefono')
-                                <p>{{ $message }}</p>
+                                    <p>{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                             <div class="checkout-form-list">
                                 <label>Numero Tarjeta<span class="required">*</span></label>
                                 <input id="numTarjeta" maxlength="19" name="num_tarjeta" type="text" placeholder="" />
-                                @error('numTarjeta')
+                                @error('num_tarjeta')
                                 <p>{{ $message }}</p>
                                 @enderror
                             </div>

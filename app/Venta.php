@@ -14,11 +14,11 @@ class venta extends Model
         'updated_at',
     ];
 
-    protected $fillable = [
-        'venta_id',
+    protected $fillable = [        
+        'num_pedido',
         'total',
-        'cantidad',
-        'folio'
+        'user_id',
+        'shipping_address_id'
     ];
     protected $primaryKey = 'venta_id';
     

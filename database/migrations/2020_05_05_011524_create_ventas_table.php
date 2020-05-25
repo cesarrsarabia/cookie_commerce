@@ -17,8 +17,7 @@ class CreateVentasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shipping_address_id');
-            $table->string('num_pedido');
-            $table->integer('cantidad');  
+            $table->string('num_pedido');              
             $table->decimal('total',8,2);     
             $table->timestamps();
         });

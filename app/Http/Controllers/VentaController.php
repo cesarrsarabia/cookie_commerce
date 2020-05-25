@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\venta;
+use App\Venta;
 use App\Categoria;
+use App\shipping_address;
+use App\Tarjeta;
+use App\venta_producto;
 use App\Cart;
 use Illuminate\Http\Request;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class VentaController extends Controller
 {
@@ -45,7 +49,7 @@ class VentaController extends Controller
      */
     public function storeVenta(Request $request)
     {
-        //
+
         $request->validate([
             'estado' => 'required',
             'municipio' => 'required',
@@ -54,14 +58,36 @@ class VentaController extends Controller
             'cod_postal' => 'required|numeric',
             'telefono' => 'required|numeric',
             'nombre_titular' => 'required',
-            'numTarjeta' => 'required|numeric',
+            'num_tarjeta' => 'required|min:19|regex:/^[0-9 ]+$/',
             'f_vencimiento' => 'required',
             'cvv' => 'required|numeric'
         ],
         [
-            'required' => 'Campo Obligatorio'
+            'required' => 'Campo Obligatorio',
+            'num_tarjeta.regex' => 'Campo no valido',
+            'min' => 'Campo no valido'
         ]);
         
+        //dd($request->all());
+        $shipAddress = shipping_address::create($request->all());
+
+        Tarjeta::create(array_merge($request->all(),['user_id'=>\Auth::id()]));
+        //dd($shipAddress);
+
+        $num_pedido = IdGenerator::generate(['table' => 'ventas', 'length' => 10, 'prefix' =>date('ym')]);
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $total = $this->subTotalCart($cartProductos);
+
+        $venta = Venta::create(array_merge($request->all(),['user_id'=>\Auth::id(),
+                                                'shipping_address_id' => $shipAddress->id,
+                                                'num_pedido'=>$num_pedido,
+                                                'total'=>$total]));
+        //Insertar shipping address
+
+        //insertar venta
+
+        //insertar producto_venta
         
     }
 
