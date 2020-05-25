@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="header-cart-4 furits-cart">
-                        <a class="icon-cart" href="#">
+                        <a class="icon-cart" href="{{ route('cartShow') }}">
                             <i class="pe-7s-shopbag"></i>
 
                             @if (isset($cartProductos))
@@ -131,16 +131,19 @@
                             @endif
                            
                             <li class="cart-space">
+                                @if (isset($subtotal))
                                 <div class="cart-sub">
                                     <h4>Subtotal</h4>
                                 </div>
                                 <div class="cart-price">
                                     <h4>${{$subtotal}}</h4>
                                 </div>
+                                @endif
+                               
 
                             </li>
                             <li class="cart-btn-wrapper">
-                                <a class="cart-btn btn-hover" href="#">view cart</a>
+                                <a class="cart-btn btn-hover" href="{{ route('cartShow') }}">view cart</a>
                                 <a class="cart-btn btn-hover" href="#">checkout</a>
                             </li>
                         </ul>

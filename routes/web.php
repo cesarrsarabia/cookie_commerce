@@ -25,7 +25,9 @@ Route::resource('categoria','CategoriaController')->parameters(['categoria' => '
 
 Route::resource('usuario','UserController');
 
-Route::resource('venta','VentaController')->parameters(['venta' => 'venta']);
+Route::resource('venta','VentaController')->parameters(['venta' => 'venta'])->middleware('auth');
+
+Route::post('/venta/create/storeVenta','VentaController@storeVenta')->name('storeVenta');
 
 Route::get('/ShopGrid','ShopController@ShowProductsGrid')->name('ShopGrid');
 
@@ -33,6 +35,8 @@ Route::get('/ProductDetails/{producto}','ShopController@ShowProductDetails')->na
 
 Route::post('/ProductDetails/{producto}/AddCart',
 'ShopController@AddProductToCart')->name('ShopAddToCart')->middleware('auth');
+
+Route::get('/cartDetails','CartController@show')->name('cartShow')->middleware('auth');
 
 //Route::post('/cart/add','CartController@store');
 

@@ -41,37 +41,36 @@ class ShopController extends Controller
 
     public function AddProductToCart(Request $request, Producto $producto)
     {
+        $request->validate([
+            'quantity' => 'required|numeric|gt:0',
+        ],
+        [
+            'quantity.required' => 'Ingrese la Cantidad',
+            'quantity.gt'  => 'La cantidad debe ser mayor a 0.'
+        ]);
 
 
         if (Cart::where('user_id', '=', \Auth::id())->exists()) {
-            $idC = Cart::where('user_id','=',\Auth::id())->first()->value('id');
-            if(isset($idC)){
-                $p = cart_producto::where('user_id','=',$idC);
-                //dd($p);
-            }
+            $idCart = Cart::where('user_id','=',\Auth::id())->first()->value('id');
         } else {
-            $request->validate([
-                'quantity' => 'required|numeric|gt:0',
-            ],
-            [
-                'quantity.required' => 'Ingrese la Cantidad',
-                'quantity.gt'  => 'La cantidad debe ser mayor a 0.'
-            ]);
-
+           
             $cart_data = ['user_id' => \Auth::id(),'created_at' => Carbon::now()];
-            $idCartInserted = DB::table('carts')->insertGetId($cart_data);
-            $cartProductData = [
-                'cart_id' => $idCartInserted,
-                'producto_id' => $producto->producto_id,
-                'cantidad' => $request->quantity
-            ];
-
-            cart_producto::create($cartProductData);
-
-
-            //DB::table('cart_products')->insert();
+            $idCart = DB::table('carts')->insertGetId($cart_data);
         }
+        $cartProductData = [
+            'cart_id' => $idCart,
+            'producto_id' => $producto->producto_id,
+            'cantidad' => $request->quantity
+        ];
+
+        cart_producto::create($cartProductData);
+
+
+        return redirect()->back();
     }
+
+
+
     private function subTotalCart($products){
         if(!isset($products)){
             return 0;

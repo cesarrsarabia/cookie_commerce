@@ -6,23 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tarjeta extends Model
 {
+    public $timestamps = true;
+    
     protected $fillable = [
-        'tarjeta_id',
+        'id',
+        'user_id',
         'nombre_titular',
-        'fecha_vencimiento',
-        'numero',
-        'cvc'
+        'f_vencimiento',
+        'num_tarjeta',
+        'cvv'
     ];
-    protected $primaryKey = 'tarjeta_id';
+
+    protected $dates = [
+        'created_at'
+    ];
+
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'id');
-    }
-
-    public function ticket()
-    {
-        return $this->belongsTo('App\Ticket', 'ticket_id');
+        return $this->belongsTo('App\User');
     }
 
 

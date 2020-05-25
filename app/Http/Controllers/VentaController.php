@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\venta;
+use App\Categoria;
+use App\Cart;
 use Illuminate\Http\Request;
 
 class VentaController extends Controller
@@ -27,6 +29,12 @@ class VentaController extends Controller
     public function create()
     {
         //
+        $categorias = Categoria::all();
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $total = $this->subTotalCart($cartProductos);
+        return view('Ventas.ventaForm',compact('categorias','cartProductos','total'));
+
     }
 
     /**
@@ -35,9 +43,26 @@ class VentaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeVenta(Request $request)
     {
         //
+        $request->validate([
+            'estado' => 'required',
+            'municipio' => 'required',
+            'calle' => 'required',
+            'num_exterior' => 'required',
+            'cod_postal' => 'required|numeric',
+            'telefono' => 'required|numeric',
+            'nombre_titular' => 'required',
+            'numTarjeta' => 'required|numeric',
+            'f_vencimiento' => 'required',
+            'cvv' => 'required|numeric'
+        ],
+        [
+            'required' => 'Campo Obligatorio'
+        ]);
+        
+        
     }
 
     /**
@@ -83,5 +108,17 @@ class VentaController extends Controller
     public function destroy(venta $venta)
     {
         //
+    }
+
+    private function subTotalCart($products){
+        if(!isset($products)){
+            return 0;
+        }
+        $subTotal = 0;
+        foreach($products as $p){
+            $totalProduct = $p->precio * $p->cantidad;
+             $subTotal += $totalProduct;
+        }
+        return $subTotal;
     }
 }

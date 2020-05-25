@@ -15,11 +15,11 @@ class CreateTarjetasTable extends Migration
     {
         Schema::create('tarjetas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('nombre_titular');
-            $table->date('f_vencimiento');
-            $table->string('numero');
-            $table->unsignedInteger('cvc');            
+            $table->string('f_vencimiento');
+            $table->string('num_tarjeta');
+            $table->unsignedInteger('cvv');
             $table->timestamps();
         });
     }

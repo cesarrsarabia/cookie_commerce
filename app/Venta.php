@@ -21,10 +21,16 @@ class venta extends Model
         'folio'
     ];
     protected $primaryKey = 'venta_id';
-    public function ticket(){
-        return $this->belongsTo('App\Ticket', 'ticket_id');
+    
+    public function shipping_address(){
+        return $this->hasOne('App\shipping_address');
     }
-    public function productos(){
-        return $this->hasMany('App\Producto');
+
+    public function venta_producto(){
+        return $this->hasMany('App\venta_producto');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }

@@ -3,35 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function Add($p_id)
-    {
-        dd($p_id);
-        //
-    }
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -52,8 +29,13 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show()
     {
+        $categorias = Categoria::all();
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $total = $this->subTotalCart($cartProductos);
+        return view('cart.cartShow',compact('categorias','cartProductos','total'));
         //
     }
 
@@ -63,7 +45,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit($idCart)
     {
         //
     }
@@ -89,5 +71,17 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+    }
+
+    private function subTotalCart($products){
+        if(!isset($products)){
+            return 0;
+        }
+        $subTotal = 0;
+        foreach($products as $p){
+            $totalProduct = $p->precio * $p->cantidad;
+             $subTotal += $totalProduct;
+        }
+        return $subTotal;
     }
 }
