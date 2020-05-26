@@ -5,7 +5,7 @@
     <div class="container">
         <div class="col-lg-6 col-md-12 col-12 offset-3">
             <div class="your-order">
-                <h3>Pedido</h3>
+                <h3>Detalles Compra</h3>
                 <div class="your-order-table table-responsive">
                     <table>
                         <thead>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,8 +17,9 @@ class UsersTableSeeder extends Seeder
             'nombre' => 'Admin',
             'apellido' => '-',
             'email' => 'admin@cookie.mx',
-            'password' => bcrypt('Password'),
-            'tipo' => 'admin'            
+            'password' => bcrypt('password'),
+            'tipo' => 'admin',
+            'created_at' => Carbon::now()            
         ]);
 
         DB::table('users')->insert([
@@ -25,7 +27,10 @@ class UsersTableSeeder extends Seeder
             'apellido' => 'Prueba',
             'email' => 'user@gmail.com',
             'password' => bcrypt('12345678'),
-            'tipo' => 'user'            
+            'tipo' => 'user',
+            'created_at' => Carbon::now()            
         ]);
+
+        factory(App\User::class,10)->create();
     }
 }

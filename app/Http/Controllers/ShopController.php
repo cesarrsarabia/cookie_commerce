@@ -10,16 +10,23 @@ use App\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use UxWeb\SweetAlert\SweetAlert;
 
 class ShopController extends Controller
 {
     //
 
 
-    public function ShowProductsGrid()
+    public function ShowProductsGrid(Request $request)
     {
         //$productos = DB::table('productos')->pagination(9);
-        $productos = Producto::paginate(2);
+        if(isset($request->search_input)){
+            
+            $productos = Producto::where('nombre', 'like', '%' . $request->search_input . '%')->paginate(2);
+        }else{
+            $productos = Producto::paginate(2);
+        }
+        
         //dd($productos);
         $categorias = Categoria::all();
         $userCart = new Cart();
@@ -65,7 +72,7 @@ class ShopController extends Controller
 
         cart_producto::create($cartProductData);
 
-
+        alert()->success('Producto agregado al carrito');
         return redirect()->back();
     }
 

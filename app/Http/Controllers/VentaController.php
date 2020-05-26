@@ -11,6 +11,7 @@ use App\Cart;
 use App\cart_producto;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use UxWeb\SweetAlert\SweetAlert;
 
 class VentaController extends Controller
 {
@@ -101,7 +102,10 @@ class VentaController extends Controller
         Cart::where('id',$cart->id)->delete();
         cart_producto::where('cart_id',$cart->id)->delete();
 
-        return view('usuarios.userCompras');
+       //SweetAlert::message('Robots are working!');
+       alert()->success('Compra Realizada con Exito');
+
+        return redirect()->route('showCompraDetails',['venta'=>$venta]);
      
         
     }

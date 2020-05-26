@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/ownstyle.css') }}">
     @yield('header_content')
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +34,7 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
+        
 
 
 @if (\Auth::check())

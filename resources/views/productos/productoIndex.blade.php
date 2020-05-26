@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-
+@include('sweet::alert')
+<?php Session::forget('sweet_alert'); ?>
 <div class="row">
     <div class="col-md-3">
         <a href="{{ action('ProductoController@create') }}" class="menu-btn btn-hover">Agregar Producto</a>
@@ -38,7 +39,7 @@
                             ${{$producto->precio}}
                         </td>
                         <td class="product-remove">
-                            <a href="{{ route('producto.show', $producto->producto_id) }}"><i class="pe-7s-look"></i></a>
+                            <a href="{{ route('producto.show', $producto) }}"><i class="pe-7s-look"></i></a>
                         </td>                        
                     </tr>
                     @endforeach

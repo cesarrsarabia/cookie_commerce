@@ -3,8 +3,9 @@
         <div class="container-fluid">
             <div class="header-bottom-wrapper">
                 <div class="logo-2 ptb-35">
-                    <a href="index.html">
-                        <img src="assets/img/logo/logo-10.png" alt="">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('images/LogoCookieCommerce.png') }}" alt=""
+                     width="250px" height="100px">
                     </a>
                 </div>
                 <div class="menu-style-2 handicraft-menu menu-hover">

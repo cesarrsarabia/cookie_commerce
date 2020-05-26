@@ -15,7 +15,7 @@ class ProductoTableSeeder extends Seeder
 
         $productos = [
             [
-                'nombre' => 'Galletas María',
+                'nombre' => 'Galletas Maria',
                 'descripcion' => 'Galletas sabor vainilla',
                 'precio' => 15.50,
                 'categoria_id' => 2,

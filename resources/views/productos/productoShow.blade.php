@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
     
 <div class="row">
     <div class="col-lg-6 col-md-12 col-12 mx-auto">
@@ -15,9 +16,12 @@
                     
                     <div class="col-md-12" style="padding-top:30px;">
                         <div class="checkout-form-list">
-                           
-                             <img src="{{isset($rutaArchivo)? $rutaArchivo : ''}}" alt="">
-                            		
+                            
+                           {{-- Zona Imagen--}}
+                          
+                        
+                            
+                            	
                         </div>
                     </div>
                     <div class="col-md-12" style="padding-top:30px;">
@@ -46,22 +50,24 @@
                     
                  
                 </div>	
+                 
                 <div class="row">
                     <div class="col-md-6">                        
-                        <a href="{{route('producto.edit',$producto->producto_id)}}" class="menu-btn btn-hover">Editar</a>
+                        <a href="{{route('producto.edit',$producto)}}" class="menu-btn btn-hover">Editar</a>
                     </div>                   
                     <br>
                     <br>
                     <div class="col-md-6">
                         
-                        <form action="{{route('producto.destroy',$producto->producto_id)}}" method="POST">
+                        <form action="{{route('producto.destroy',$producto)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" style="border-right:0px;border-bottom:0px;" class="menu-btn-danger btn-hover float-right">Eliminar</button>                            
                         </form>    
                     </div>
                    
-                </div>												
+                </div>	
+                											
             </div>
         
     </div>	

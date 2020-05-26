@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\Categoria;
 use App\Archivo;
+use Storage;
 
 
 class ProductoController extends Controller
@@ -19,7 +20,7 @@ class ProductoController extends Controller
     {
         $productos =  Producto::all();
         
-        //dd($tareas);
+        //dd($productos);
         return view('productos.productoIndex', compact('productos'));
     }
 
@@ -58,23 +59,25 @@ class ProductoController extends Controller
 
        $new_producto = Producto::create($request->all());
 
-        if ($request->mi_archivo->isValid())
-        {
-            $nombreHash = $request->mi_archivo->store('archivos_cargados','public');
-            //$request->mi_archivo->store('archivos_cargados');
+        if(isset($request->mi_archivo)){
+            if ($request->mi_archivo->isValid())
+            {
+                $nombreHash = $request->mi_archivo->store('archivos_cargados','public');
+                //$request->mi_archivo->store('archivos_cargados');
+                
+                //Crea registro en tabla archivos
+                $new_producto->archivos()->create([
+                    'nombre_original' => $request->mi_archivo->getClientOriginalName(),
+                    'nombre_hash' => $nombreHash,
+                    'mime' => $request->mi_archivo->getClientMimeType(),
+                    'tamaño' => $request->mi_archivo->getClientSize(),
+                    ]);
             
-            //Crea registro en tabla archivos
-            $new_producto->archivos()->create([
-                'nombre_original' => $request->mi_archivo->getClientOriginalName(),
-                'nombre_hash' => $nombreHash,
-                'mime' => $request->mi_archivo->getClientMimeType(),
-                'tamaño' => $request->mi_archivo->getClientSize(),
-                ]);
-          
-            
+                
+            }
         }
 
-
+        alert()->success('Producto Agregado con éxito');
         return redirect()->route('producto.index');
         
     }
@@ -85,17 +88,28 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Producto $producto)
     {
-        $producto = Producto::find($id);
+       // $producto = Producto::find($id);
+        //dd($producto);
         $archivo = $producto->archivos;
+        $rutaArchivo = null;
+        if($archivo->isNotEmpty()){
+            $nombreImg = $archivo[0]->nombre_hash;
+            $rutaArchivo = asset("storage/" .$nombreImg);      
+                 
+        }
+        
+        return view('productos.productoShow',compact('producto'));  
+        
+       
         //dd($archivo);
         //$rutaArchivo_1 = Storage::disk('public')->get( $archivo[0]->nombre_hash); 
-        $nombreImg = $archivo[0]->nombre_hash;
-        $rutaArchivo = asset("storage/" .$nombreImg);
+        
+        
         //$contents = Archivo::with('origen')->get();
         //dd($contents);
-        return view('productos.productoShow',compact('producto','rutaArchivo'));
+       
 
     }
 
@@ -135,7 +149,7 @@ class ProductoController extends Controller
             $request->merge(['categoria_id' => null]);
         }
         Producto::where('producto_id',$producto->producto_id)->update($request->except('_token','_method'));
-      
+        alert()->success('Producto modificado con éxito');
         return redirect()->route('producto.show', $producto->producto_id);
     }
 
@@ -148,6 +162,7 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         $producto->delete();
+        alert()->success('Producto eliminado con éxito','Eliminado');
         return redirect()->route('producto.index');
     }
 }

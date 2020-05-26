@@ -39,12 +39,12 @@
 
                             <li>
                                 <div class="furniture-search">
-                                    <form action="#">
-                                        <input style="width: 400px" placeholder="Búsqueda" type="text">
+                                     {!! Form::open(array('method' => 'GET', 'route' => array('ShopGrid'))) !!}                                    
+                                        <input name="search_input" style="width: 400px" placeholder="Búsqueda" type="text">
                                         <button>
                                             <i class="ti-search"></i>
-                                        </button>
-                                    </form>
+                                        </button>     
+                                    {!! Form::close()!!}                               
                                 </div>
                                 
                             </li>   
