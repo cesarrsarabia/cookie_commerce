@@ -18,11 +18,13 @@ class Cart extends Model
     public function getCartProducts($userId){
         return DB::table('carts')
                 ->select('productos.nombre as nombre_product','productos.precio as precio',
-                        'cart_productos.cantidad','carts.id as idCart')
+                        'cart_productos.cantidad','carts.id as idCart','productos.producto_id as idProduct')
                 ->join('cart_productos', 'carts.id', '=', 'cart_productos.cart_id')
                 ->join('productos', 'productos.producto_id', '=', 'cart_productos.producto_id')
                 ->where('carts.user_id', '=', $userId)
                 ->get();
                 
     }
+
+    
 }

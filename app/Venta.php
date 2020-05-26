@@ -20,7 +20,7 @@ class venta extends Model
         'user_id',
         'shipping_address_id'
     ];
-    protected $primaryKey = 'venta_id';
+   
     
     public function shipping_address(){
         return $this->hasOne('App\shipping_address');

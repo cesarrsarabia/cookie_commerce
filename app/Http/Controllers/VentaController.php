@@ -8,6 +8,7 @@ use App\shipping_address;
 use App\Tarjeta;
 use App\venta_producto;
 use App\Cart;
+use App\cart_producto;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
@@ -74,7 +75,7 @@ class VentaController extends Controller
         Tarjeta::create(array_merge($request->all(),['user_id'=>\Auth::id()]));
         //dd($shipAddress);
 
-        $num_pedido = IdGenerator::generate(['table' => 'ventas', 'length' => 10, 'prefix' =>date('ym')]);
+        $num_pedido = IdGenerator::generate(['table' => 'ventas','field'=>'num_pedido', 'length' => 10, 'prefix' =>date('ym')]);
         $userCart = new Cart();
         $cartProductos = $userCart->getCartProducts(\Auth::id());
         $total = $this->subTotalCart($cartProductos);
@@ -83,11 +84,25 @@ class VentaController extends Controller
                                                 'shipping_address_id' => $shipAddress->id,
                                                 'num_pedido'=>$num_pedido,
                                                 'total'=>$total]));
-        //Insertar shipping address
 
-        //insertar venta
+        //dd($venta);
 
-        //insertar producto_venta
+        foreach ($cartProductos as $prod) {
+            venta_producto::create([
+                'venta_id' => $venta->id,
+                'producto_id' => $prod->idProduct,
+                'cantidad' => $prod->cantidad
+            ]);
+        }   
+        
+        //Elimina Productos del carrito         
+        $cart = Cart::where('user_id',\Auth::id())->first();
+
+        Cart::where('id',$cart->id)->delete();
+        cart_producto::where('cart_id',$cart->id)->delete();
+
+        return view('usuarios.userCompras');
+     
         
     }
 

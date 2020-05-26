@@ -30,4 +30,8 @@ class Producto extends Model
     {
         return $this->morphMany(Archivo::class,'origen');
     }
+
+    public function venta_producto(){
+        return $this->belongsTo('App\venta_producto','producto_id','producto_id');
+    }
 }

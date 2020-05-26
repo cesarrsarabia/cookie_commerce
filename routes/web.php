@@ -38,6 +38,10 @@ Route::post('/ProductDetails/{producto}/AddCart',
 
 Route::get('/cartDetails','CartController@show')->name('cartShow')->middleware('auth');
 
+Route::get('/MisCompras','UserController@showUserCompras')->name('showCompras');
+
+Route::get('/MisCompras/{venta}/Details','UserController@showCompraDetails')->name('showCompraDetails');
+
 //Route::post('/cart/add','CartController@store');
 
 /*

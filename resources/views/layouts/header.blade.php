@@ -76,6 +76,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('showCompras') }}">
+                                            Mis Compras
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                       document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}

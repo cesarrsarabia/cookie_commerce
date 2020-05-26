@@ -17,6 +17,7 @@ class CreateVentaProductosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('producto_id');
+            $table->unsignedSmallInteger('cantidad');
             $table->timestamps();
         });
     }
