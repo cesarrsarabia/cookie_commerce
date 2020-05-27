@@ -33,6 +33,7 @@ class CartController extends Controller
     {
         $categorias = Categoria::all();
         $userCart = new Cart();
+        $cart = Cart::where('user_id',\Auth::id());
         $cartProductos = $userCart->getCartProducts(\Auth::id());
         $total = $this->subTotalCart($cartProductos);
         return view('cart.cartShow',compact('categorias','cartProductos','total'));

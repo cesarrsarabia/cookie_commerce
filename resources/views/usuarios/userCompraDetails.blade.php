@@ -19,7 +19,7 @@
                             @foreach ($venta_productos as $ventaProducto)
                             <tr class="cart_item">
                                 <td class="product-name">
-                                    {{$ventaProducto->producto->nombre}} <strong class="product-quantity"> ×
+                                    {{$ventaProducto->Producto->nombre}} <strong class="product-quantity"> ×
                                         {{$ventaProducto->cantidad}}</strong>
                                 </td>
                                 <td class="product-total">

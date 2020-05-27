@@ -21,6 +21,7 @@ class CreateTarjetasTable extends Migration
             $table->string('num_tarjeta');
             $table->unsignedInteger('cvv');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

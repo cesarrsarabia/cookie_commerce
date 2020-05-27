@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-@include('sweet::alert')
-<?php Session::forget('sweet_alert'); ?>
+
 <div class="row">
     <div class="col-md-3">
         <a href="{{ action('ProductoController@create') }}" class="menu-btn btn-hover">Agregar Producto</a>

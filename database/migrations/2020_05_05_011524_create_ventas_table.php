@@ -20,6 +20,8 @@ class CreateVentasTable extends Migration
             $table->string('num_pedido');              
             $table->decimal('total',8,2);     
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('shipping_address_id')->references('id')->on('shipping_addresses');
         });
     }
 

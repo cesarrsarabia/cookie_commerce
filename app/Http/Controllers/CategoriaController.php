@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use Illuminate\Http\Request;
 
+
 class CategoriaController extends Controller
 {
     /**
@@ -38,7 +39,15 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required|max:255' // Valida el tipo de dato sea fecha
+        ]);
+        Categoria::create($request->all());
+        alert()->success('Categoria Agregada con éxito');
+        return redirect()->route('categoria.index');
+
     }
 
     /**
@@ -77,6 +86,14 @@ class CategoriaController extends Controller
     public function update(Request $request, Categoria $categoria)
     {
         //
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required|max:255', // Valida el tipo de dato sea fecha            
+        ]);
+      
+        Categoria::where('categoria_id',$categoria->categoria_id)->update($request->except('_token','_method'));
+        alert()->success('Categoria modificada con éxito');
+        return redirect()->route('categoria.show', $categoria);
     }
 
     /**
@@ -88,5 +105,8 @@ class CategoriaController extends Controller
     public function destroy(Categoria $categoria)
     {
         //
+        $categoria->delete();
+        alert()->success('Categoria eliminado con éxito','Eliminado');
+        return redirect()->route('categoria.index');
     }
 }

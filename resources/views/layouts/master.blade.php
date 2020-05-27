@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Cookie Commerce</title>
+    
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="_token" content="{{csrf_token()}}" />
+    
+    {{--<meta name="_token" content="{{csrf_token()}}" />--}}
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
 
@@ -26,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/ownstyle.css') }}">
     @yield('header_content')
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   
 </head>
 
 <body>
@@ -71,6 +73,14 @@
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (Session::has('sweet_alert.alert'))
+    <script>
+    swal({!! Session::get('sweet_alert.alert') !!});
+    </script>
+    {{ Session::forget('sweet_alert') }}
+    @endif
+
     @yield('scripts')
 </body>
 

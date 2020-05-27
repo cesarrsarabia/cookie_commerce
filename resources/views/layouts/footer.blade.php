@@ -2,20 +2,21 @@
     <div class="food-footer-bottom pt-80 pb-70 black-bg-5" style="margin-top:50px">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4 offset-1">
                     <div class="footer-widget">
                         <div class="food-about">
-                            <a href="#"><img src="assets/img/logo/logo-11.png" alt=""></a>
-                            <p>Fresh Fruits Online Shop</p>
+                            <a href="#"><img width="250px" height="100px"
+                                 src="{{ asset('images/LogoCookieCommerce.png') }}" alt=""></a>
+                            <p>Tienda de las Mejores Galletas</p>
                             <div class="food-about-info">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                
                                  <div class="food-info-wrapper">
                                     <div class="food-address">
                                         <div class="food-info-icon">
                                             <i class="pe-7s-map-marker"></i>
                                         </div>
                                         <div class="food-info-content">
-                                            <p>13 Banasree, Dhaka, Bangladesh</p>
+                                            <p>Guadalajara, Jalisco. México</p>
                                         </div>
                                     </div>
                                     <div class="food-address">
@@ -23,7 +24,7 @@
                                             <i class="pe-7s-call"></i>
                                         </div>
                                         <div class="food-info-content">
-                                            <p>+88 -122-5184203</p>
+                                            <p>+55 -33-12345678</p>
                                         </div>
                                     </div>
                                     <div class="food-address">
@@ -31,7 +32,7 @@
                                             <i class="pe-7s-chat"></i>
                                         </div>
                                         <div class="food-info-content">
-                                            <p><a href="#">domain@mail.com</a> <br><a href="#">company@domain.info</a></p>
+                                            <p><a href="#">cookie@mail.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -39,6 +40,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- 
                 <div class="col-md-6 col-lg-2">
                     <div class="footer-widget mt-50">
                         <h3 class="footer-widget-title-6">Options</h3>
@@ -53,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6 col-lg-3">
                     <div class="footer-widget mt-50">
                         <h3 class="footer-widget-title-6">Information</h3>
@@ -75,6 +78,7 @@
                         </div>
                     </div>
                 </div>
+                --}}
             </div>
         </div>
     </div>

@@ -12,14 +12,14 @@
             <table>
                 <thead>
                     <tr>                                              
-                        <th>Folio</th>
+                        <th>Num. Peido</th>
                         <th>Fecha</th>
                         <th>Total</th>
                         <th>Ver Detalles</th>                        
                     </tr>
                 </thead>
                 <tbody>
-                    @if (!isset($venta))
+                    @if (!isset($ventas))
                     <tr class="blank_row">
                         <td colspan="4"><strong>No existen Ventas Registradas</strong></td>
                     </tr>                    
@@ -28,7 +28,7 @@
                         <tr>                    
                             
                             <td class="product-name">
-                                {{$venta->folio}}
+                                {{$venta->num_pedido}}
                             </td>
                             <td class="product-name">
                                 {{$venta->created_at}}
@@ -37,7 +37,7 @@
                                 ${{$venta->total}}
                             </td>
                             <td class="product-remove">
-                                <a href="{{ route('producto.show', $venta->venta_id) }}"><i class="pe-7s-look"></i></a>
+                                <a href="{{ route('producto.show', $venta) }}"><i class="pe-7s-look"></i></a>
                             </td>                        
                         </tr>
                         @endforeach

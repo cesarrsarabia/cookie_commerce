@@ -7,6 +7,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="shop-sidebar">
+                    {{-- 
                     <div class="sidebar-widget mb-50">
                         <h3 class="sidebar-title">Search Products</h3>
                         <div class="sidebar-search">
@@ -16,6 +17,7 @@
                             </form>
                         </div>
                     </div>
+                    --}}
                     {{-- 
                     <div class="sidebar-widget mb-40">
                         <h3 class="sidebar-title">Filter by Price</h3>

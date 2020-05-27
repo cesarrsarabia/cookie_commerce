@@ -23,7 +23,7 @@ class VentaController extends Controller
     public function index()
     {
         $ventas =  Venta::all();
-        //dd($tareas);
+        //dd($ventas);
         return view('ventas.ventaIndex', compact('ventas'));
     }
 
@@ -105,7 +105,7 @@ class VentaController extends Controller
        //SweetAlert::message('Robots are working!');
        alert()->success('Compra Realizada con Exito');
 
-        return redirect()->route('showCompraDetails',['venta'=>$venta]);
+        return redirect()->route('showCompras');
      
         
     }
@@ -116,7 +116,7 @@ class VentaController extends Controller
      * @param  \App\venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function show(venta $venta)
+    public function show(Venta $venta)
     {
         //
     }

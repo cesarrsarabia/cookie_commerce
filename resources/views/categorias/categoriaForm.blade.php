@@ -17,7 +17,7 @@
 </div>
 
 @isset($categoria)
-    {!!Form::model($categoria, ['route' => ['categoria.update', $categoria->categoria_id],'method' => 'PATCH'])!!}
+    {!!Form::model($categoria, ['route' => ['categoria.update', $categoria],'method' => 'PATCH'])!!}
     {{-- <form action="{{ route('tarea.update',$tarea->id) }}"
     method="POST">--}}
     @method('PATCH')

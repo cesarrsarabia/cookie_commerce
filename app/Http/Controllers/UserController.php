@@ -46,7 +46,7 @@ class UserController extends Controller
         
         $venta_productos = venta_producto::where('venta_id',$venta->id)->get();
         //dd($venta->id);
-        
+        //dd($venta_productos[0]->Producto);
 
         return view('usuarios.userCompraDetails',compact('categorias','cartProductos','total','compras',
             'venta','venta_productos'));

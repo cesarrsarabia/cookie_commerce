@@ -22,6 +22,6 @@ class venta_producto extends Model
     }
 
     public function Producto(){
-        return $this->hasOne('App\Producto','producto_id');
+        return $this->hasOne('App\Producto','producto_id','producto_id');
     }
 }

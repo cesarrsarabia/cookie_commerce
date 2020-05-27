@@ -38,7 +38,13 @@
                 <div class="login-form">
 
                     <input id="mi_img" name="mi_archivo" class="form-control" type="file" onchange="readURL(this);">  
-                    <img id="blah" src="" alt=""/> 
+                    @isset($producto)
+                        @isset($producto->archivos->last()->nombre_hash)
+                            <img id="blah" src="{{asset("storage/" .$producto->archivos->last()->nombre_hash)}}" alt="" width="150px" height="150px"/>                                 
+                        @endisset
+                    @else
+                        <img id="blah" src="" alt=""/> 
+                    @endisset
                     <br>
                     <br>
                    

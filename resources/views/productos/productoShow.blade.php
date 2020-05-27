@@ -19,7 +19,10 @@
                             
                            {{-- Zona Imagen--}}
                           
-                        
+                           @isset($rutaArchivo)
+                                <img width="150px" height="150px" src="{{$rutaArchivo}}" alt=""
+                                style="margin-left: 200px;">
+                           @endisset
                             
                             	
                         </div>
@@ -39,7 +42,8 @@
                     <div class="col-md-12">
                         <div class="checkout-form-list">
                             <label>Categoria</label>
-                            <input type="text" value="{{$producto->categoria->nombre}}" disabled>					
+                            <input type="text" value="{{isset($producto->categoria->nombre)? 
+                            $producto->categoria->nombre:' '}}" disabled>					
                         </div>
                     </div>
                     <div class="col-md-3 offset-0">                       

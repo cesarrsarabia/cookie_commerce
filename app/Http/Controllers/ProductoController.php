@@ -7,7 +7,7 @@ use App\Producto;
 use App\Categoria;
 use App\Archivo;
 use Storage;
-
+use Session;
 
 class ProductoController extends Controller
 {
@@ -95,12 +95,14 @@ class ProductoController extends Controller
         $archivo = $producto->archivos;
         $rutaArchivo = null;
         if($archivo->isNotEmpty()){
-            $nombreImg = $archivo[0]->nombre_hash;
+            $nombreImg = $archivo->last()->nombre_hash;
             $rutaArchivo = asset("storage/" .$nombreImg);      
-                 
+            return view('productos.productoShow',compact('producto','rutaArchivo'));  
+        }else{
+            return view('productos.productoShow',compact('producto'));  
         }
         
-        return view('productos.productoShow',compact('producto'));  
+        
         
        
         //dd($archivo);
@@ -123,6 +125,7 @@ class ProductoController extends Controller
     {
         //
         //$producto = Producto::find($id);
+        //dd($producto->archivos);
         $categorias = Categoria::all()->pluck('nombre', 'categoria_id')->toArray();
         
         return view('productos.productoForm', compact('producto','categorias'));
@@ -148,7 +151,26 @@ class ProductoController extends Controller
         if($request->categoria_id == 0 ){
             $request->merge(['categoria_id' => null]);
         }
-        Producto::where('producto_id',$producto->producto_id)->update($request->except('_token','_method'));
+        Producto::where('producto_id',$producto->producto_id)->update($request->except('_token','_method','mi_archivo'));
+
+
+        if(isset($request->mi_archivo)){
+            if ($request->mi_archivo->isValid())
+            {
+                $nombreHash = $request->mi_archivo->store('archivos_cargados','public');
+                //$request->mi_archivo->store('archivos_cargados');
+                
+                //Crea registro en tabla archivos
+                $producto->archivos()->create([
+                    'nombre_original' => $request->mi_archivo->getClientOriginalName(),
+                    'nombre_hash' => $nombreHash,
+                    'mime' => $request->mi_archivo->getClientMimeType(),
+                    'tamaño' => $request->mi_archivo->getClientSize(),
+                    ]);
+            
+                
+            }
+        }
         alert()->success('Producto modificado con éxito');
         return redirect()->route('producto.show', $producto->producto_id);
     }

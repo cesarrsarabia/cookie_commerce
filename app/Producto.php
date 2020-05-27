@@ -18,7 +18,7 @@ class Producto extends Model
     ];
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'producto_id';
-    public function categoria()
+    public function Categoria()
     {
         return $this->belongsTo('App\Categoria', 'categoria_id');
     }
@@ -32,6 +32,6 @@ class Producto extends Model
     }
 
     public function venta_producto(){
-        return $this->belongsTo('App\venta_producto','producto_id','producto_id');
+        return $this->belongsTo('App\venta_producto','producto_id');
     }
 }
