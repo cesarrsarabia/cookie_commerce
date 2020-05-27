@@ -37,7 +37,8 @@
             <div class="login-form-container">
                 <div class="login-form">
 
-                    <input id="mi_img" name="mi_archivo" class="form-control" type="file" onchange="readURL(this);">  
+                    <input id="mi_img" name="mi_archivo" class="form-control" type="file" onchange="readURL(this);"
+                    accept="image/x-png,image/jpeg" >  
                     @isset($producto)
                         @isset($producto->archivos->last()->nombre_hash)
                             <img id="blah" src="{{asset("storage/" .$producto->archivos->last()->nombre_hash)}}" alt="" width="150px" height="150px"/>                                 

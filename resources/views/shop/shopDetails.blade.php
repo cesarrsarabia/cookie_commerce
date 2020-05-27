@@ -8,6 +8,7 @@
             <div class="col-md-12 col-lg-7 col-12">
                 <div class="product-details-img-content">
                     <div class="product-details-tab mr-35 product-details-tab2">
+                        {{-- 
                         <div class="product-details-small nav mr-10 product-details-2" role=tablist>
                             <a class="active mb-10" href="#pro-details1" data-toggle="tab" role="tab" aria-selected="true">
                                 <img src="{{ asset('images/no_img.png') }}" alt="">
@@ -22,12 +23,17 @@
                                 <img src="{{ asset('images/no_img.png') }}" alt="">
                             </a>
                         </div>
-                      
+                      --}}
                         <div class="product-details-large tab-content">
                             <div class="tab-pane active show fade" id="pro-details1" role="tabpanel">
                                 <div class="easyzoom easyzoom--overlay  is-ready">
                                     <a href="assets/img/product-details/bl1.jpg">
+                                        @isset($producto->archivos->last()->nombre_hash)
+                                        <img id="blah" src="{{asset("storage/" .$producto->archivos->last()->nombre_hash)}}" alt=""/>                                 
+                                        @else
                                         <img src="{{ asset('images/no_img.png') }}" alt="">
+                                        @endisset
+                                        
                                     </a>
                                 </div>
                             </div>
@@ -60,6 +66,7 @@
             <div class="col-md-12 col-lg-5 col-12">
                 <div class="product-details-content">
                     <h3>{{$producto->nombre}}</h3>
+                    {{-- 
                     <div class="rating-number">
                         <div class="quick-view-rating">
                             <i class="pe-7s-star red-star"></i>
@@ -72,6 +79,7 @@
                             <span>2 Ratting (S)</span>
                         </div>
                     </div>
+                    --}}
                     <div class="details-price">
                     <span>${{$producto->precio}}</span>
                     </div>

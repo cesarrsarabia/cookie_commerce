@@ -19,7 +19,7 @@
                                         <ul>
                                             @foreach ($categorias as $categ)
                                             <li>
-                                                <a href="#"> {{ $categ->nombre }}</a>
+                                                <a href="{{ route('ShopGrid', ['categ_id'=>$categ]) }}"> {{ $categ->nombre }}</a>
                                             </li>
                                             @endforeach                                            
                                         </ul>
@@ -71,7 +71,7 @@
                                 <a href="#">Bienvenido, {{ Auth::user()->nombre }}</a>
                                 <ul class="single-dropdown">
                                     <li>
-                                        <a href="dropdown-item">
+                                        <a href="{{ route('miCuenta') }}">
                                             Cuenta
                                         </a>
                                     </li>

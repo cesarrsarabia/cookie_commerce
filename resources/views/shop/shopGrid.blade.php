@@ -48,94 +48,7 @@
                     <div class="sidebar-widget sidebar-overflow mb-45">
                        
                     </div>
-                   {{-- 
-                    <div class="sidebar-widget mb-50">
-                        <h3 class="sidebar-title">Top rated products</h3>
-                        <div class="sidebar-top-rated-all">
-                            <div class="sidebar-top-rated mb-30">
-                                <div class="single-top-rated">
-                                    <div class="top-rated-img">
-                                        <a href="#"><img src="assets/img/product/sidebar-product/1.jpg" alt=""></a>
-                                    </div>
-                                    <div class="top-rated-text">
-                                        <h4><a href="#">Flying Drone</a></h4>
-                                        <div class="top-rated-rating">
-                                            <ul>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                            </ul>
-                                        </div>
-                                        <span>$140.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sidebar-top-rated mb-30">
-                                <div class="single-top-rated">
-                                    <div class="top-rated-img">
-                                        <a href="#"><img src="assets/img/product/sidebar-product/2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="top-rated-text">
-                                        <h4><a href="#">Flying Drone</a></h4>
-                                        <div class="top-rated-rating">
-                                            <ul>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                            </ul>
-                                        </div>
-                                        <span>$140.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sidebar-top-rated mb-30">
-                                <div class="single-top-rated">
-                                    <div class="top-rated-img">
-                                        <a href="#"><img src="assets/img/product/sidebar-product/3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="top-rated-text">
-                                        <h4><a href="#">Flying Drone</a></h4>
-                                        <div class="top-rated-rating">
-                                            <ul>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                            </ul>
-                                        </div>
-                                        <span>$140.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sidebar-top-rated mb-30">
-                                <div class="single-top-rated">
-                                    <div class="top-rated-img">
-                                        <a href="#"><img src="assets/img/product/sidebar-product/4.jpg" alt=""></a>
-                                    </div>
-                                    <div class="top-rated-text">
-                                        <h4><a href="#">Flying Drone</a></h4>
-                                        <div class="top-rated-rating">
-                                            <ul>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                                <li><i class="pe-7s-star"></i></li>
-                                            </ul>
-                                        </div>
-                                        <span>$140.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    --}}
                 </div>
             </div>
             <div class="col-lg-9">
@@ -178,7 +91,13 @@
                                         <div class="product-wrapper product-box-style mb-30">
                                             <div class="product-img">
                                                 <a href="{{ route('ProductDetail', ['producto'=>$product]) }}">
-                                                    <img src="assets/img/product/fashion-colorful/4.jpg" alt="">
+                                                    @isset($product->archivos->last()->nombre_hash)                                            
+                                                    <img id="blah" src="{{asset("storage/" .$product->archivos->last()->nombre_hash)}}"
+                                                     height="336px" alt=""/>                                                                                 
+                                                    @else
+                                                        <img src="assets/img/product/fashion-colorful/4.jpg" alt=""
+                                                        height="336px">
+                                                    @endisset
                                                 </a>
                                                 <div class="product-action">
                                                     <a class="animate-left" title="Wishlist" href="#">
@@ -193,7 +112,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h4><a href="#">{{ $product->nombre}} </a></h4>
+                                                <h4><a href="{{ route('ProductDetail', ['producto'=>$product]) }}">{{ $product->nombre}} </a></h4>
                                             <span>{{$product->precio}}</span>
                                             </div>
                                         </div>

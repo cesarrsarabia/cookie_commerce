@@ -3,10 +3,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-3">
-        <a href="{{ action('UserController@create') }}" class="menu-btn btn-hover">Agregar Producto</a>
-    </div>
-   
+
 </div>
 <br>
 <br>

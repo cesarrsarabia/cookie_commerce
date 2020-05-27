@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->decimal('precio',8,2);            
             $table->unsignedBigInteger('categoria_id');
             $table->timestamps();
+            $table->softDeletes();
            
         });
         Schema::table('productos', function($table) {

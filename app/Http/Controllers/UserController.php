@@ -63,6 +63,11 @@ class UserController extends Controller
         }
         return $subTotal;
     }
+
+    public function miCuenta(){
+
+        
+    }
     
 
     

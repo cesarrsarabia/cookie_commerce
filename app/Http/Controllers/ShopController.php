@@ -17,14 +17,20 @@ class ShopController extends Controller
     //
 
 
-    public function ShowProductsGrid(Request $request)
+    public function ShowProductsGrid(Request $request,Categoria $categ_id=null)
     {
         //$productos = DB::table('productos')->pagination(9);
         if(isset($request->search_input)){
             
-            $productos = Producto::where('nombre', 'like', '%' . $request->search_input . '%')->paginate(2);
+            $productos = Producto::where('nombre', 'like', '%' . $request->search_input . '%')->paginate(5);
         }else{
-            $productos = Producto::paginate(2);
+            if(!empty($categ_id)){
+                //dd($categ_id);
+                $productos = Producto::where('categoria_id',$categ_id->categoria_id)->paginate(5);
+                //dd($productos);
+            }else{
+                $productos = Producto::paginate(5);
+            }
         }
         
         //dd($productos);
