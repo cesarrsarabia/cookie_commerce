@@ -65,10 +65,59 @@ class UserController extends Controller
     }
 
     public function miCuenta(){
-
+        $user = User::find(\Auth::id());
+        $categorias = Categoria::all();
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $total = $this->subTotalCart($cartProductos);
+        return view('usuarios.cuentaDetails',compact('user','categorias','userCart'
+    ,'cartProductos','total'));
         
     }
-    
+
+    public function edit(User $user)
+    {
+       //$user = User::find(\Auth::id());
+       $user = User::find(\Auth::id());
+        $categorias = Categoria::all();
+        $userCart = new Cart();
+        $cartProductos = $userCart->getCartProducts(\Auth::id());
+        $total = $this->subTotalCart($cartProductos);
+        return view('usuarios.userForm',compact('user','categorias','userCart'
+    ,'cartProductos','total'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Producto
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,User $user)
+    {
+        //
+        //Valida que ls datos no estes vacios
+        $user = User::find(\Auth::id());
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'apellido' => 'required|max:255', // Valida el tipo de dato sea fecha
+            'email' => 'required',
+        ]);
+        
+        User::where('id',$user->id)->update($request->except('_token','_method'));
+
+        alert()->success('Usuario modificado con éxito');
+        return redirect()->route('miCuenta');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Producto
+     * @return \Illuminate\Http\Response
+     */
+   
 
     
 }

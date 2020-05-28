@@ -18,4 +18,9 @@ class UserPolicy
     {
         //
     }
+
+    public function CanModify(User $user){
+        
+        return \Auth::id() == $user->id;
+    }
 }
