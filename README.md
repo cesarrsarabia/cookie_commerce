@@ -12,12 +12,12 @@ Coookie commerce es una tienda en linea de galletas, que simula un e-commerce en
 - Ivan Collignon 
 
 ## Instalación 
--Despues de instalar el proyecto. Ejecutar: php artisan storage:link , para habilitar el almacenamiento de imagenes
--Ejecutar migraciones y seeder: php artisan migrate:fresh --seed
+- Despues de instalar el proyecto. Ejecutar: php artisan storage:link , para habilitar el almacenamiento de imagenes
+- Ejecutar migraciones y seeder: php artisan migrate:fresh --seed
 
 ## Usuarios de Prueba 
--Administrador. Email: admin@cookie.mx  Contraseña : password
--Usuario. Email: user@gmail.com Contraseña: 12345678
+- Administrador. Email: admin@cookie.mx  Contraseña : password
+- Usuario. Email: user@gmail.com Contraseña: 12345678
 
 
 
