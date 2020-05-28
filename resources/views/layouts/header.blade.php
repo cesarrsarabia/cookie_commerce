@@ -149,7 +149,9 @@
                             </li>
                             <li class="cart-btn-wrapper">
                                 <a class="cart-btn btn-hover" href="{{ route('cartShow') }}">view cart</a>
-                                <a class="cart-btn btn-hover" href="#">checkout</a>
+                                <a class="cart-btn btn-hover" href="{{ route('venta.create') }}">
+                                    checkout
+                                </a>
                             </li>
                         </ul>
                     </div>

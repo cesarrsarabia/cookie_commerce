@@ -178,11 +178,19 @@
             </div>
         </div>
         <div class="row">
+            @cannot('Checkout', App\Cart::class)
             <div class="col-md-4 offset-7">
                 <div class="order-button-payment">
                     <input type="submit" value="Ordenar" />
                 </div>
             </div>
+            @else
+            <div class="col-md-4 offset-8">
+                <div class="order-button-payment">
+                    <span>No hay Productos en El carrito</span>
+                </div>
+            </div>
+            @endcan
 
         </div>
 
